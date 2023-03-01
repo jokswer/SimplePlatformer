@@ -14,6 +14,7 @@ namespace Player
         public PlayerModel(float moveForce, float horizontalFriction, float jumpForce)
         {
             _playerInput = new PlayerInput();
+            
             _moveForce = moveForce;
             _horizontalFriction = horizontalFriction;
             _jumpForce = jumpForce;
