@@ -1,3 +1,5 @@
+using UnityEngine;
+
 namespace Player
 {
     public class PlayerPresenter
@@ -9,6 +11,11 @@ namespace Player
         {
             _playerView = playerView;
             _playerModel = playerModel;
+        }
+
+        public void Update()
+        {
+            _playerView.Jump(_playerModel.JumpForce);
         }
 
         public void FixedUpdate()

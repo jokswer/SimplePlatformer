@@ -622,6 +622,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _playerView: {fileID: 1782649249}
   _moveForce: 3
+  _jumpForce: 8
   _horizontalFriction: 0.6
 --- !u!4 &1309768924
 Transform:
@@ -652,7 +653,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Actions: {fileID: -944628639613478452, guid: 6c563dd2c7b54feaa85d8d792937a269,
     type: 3}
-  m_NotificationBehavior: 0
+  m_NotificationBehavior: 3
   m_UIInputModule: {fileID: 0}
   m_DeviceLostEvent:
     m_PersistentCalls:

@@ -7,7 +7,7 @@ public class PlayerRoot : MonoBehaviour
     
     [Header("Player Config")]
     [SerializeField] private float _moveForce = 5f;
-    // [SerializeField] private float _speedForce = 10f;
+    [SerializeField] private float _jumpForce = 10f;
     [SerializeField] private float _horizontalFriction = 1;
 
     private PlayerPresenter _playerPresenter;
@@ -15,8 +15,13 @@ public class PlayerRoot : MonoBehaviour
 
     private void Awake()
     {
-        _playerModel = new PlayerModel(_moveForce, _horizontalFriction);
+        _playerModel = new PlayerModel(_moveForce, _horizontalFriction, _jumpForce);
         _playerPresenter = new PlayerPresenter(_playerView, _playerModel);
+    }
+
+    private void Update()
+    {
+        _playerPresenter.Update();
     }
 
     private void FixedUpdate()

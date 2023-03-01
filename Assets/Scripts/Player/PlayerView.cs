@@ -19,6 +19,11 @@ namespace Player
             AddHorizontalDrag(friction);
         }
 
+        public void Jump(float force)
+        {
+            _rigidbody.AddForce(force * Vector3.up, ForceMode.VelocityChange);
+        }
+
         private void AddHorizontalDrag(float friction)
         {
             _rigidbody.AddForce(-_rigidbody.velocity.x * friction * Vector3.right, ForceMode.VelocityChange);

@@ -7,6 +7,7 @@ namespace Player
         private InputActions _inputActions;
 
         public Vector2 Move => _inputActions.Player.Move.ReadValue<Vector2>();
+        public bool IsJumped => _inputActions.Player.Jump.WasPressedThisFrame();
 
         public PlayerInput()
         {
