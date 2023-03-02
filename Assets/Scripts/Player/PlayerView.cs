@@ -6,8 +6,11 @@ namespace Player
     [RequireComponent(typeof(Rigidbody))]
     public class PlayerView : MonoBehaviour
     {
+        [SerializeField] private Transform _modelTransform;
+        [SerializeField] private float _crouchRate = 15f;
+
         private Rigidbody _rigidbody;
-        private bool _grounded;
+        private bool _grounded = true;
 
         private void Start()
         {
@@ -22,7 +25,7 @@ namespace Player
             }
         }
 
-        private void OnCollisionExit(Collision other)
+        private void OnCollisionExit()
         {
             _grounded = false;
         }
@@ -41,6 +44,15 @@ namespace Player
             if (force == 0 || !_grounded) return;
 
             _rigidbody.AddForce(force * Vector3.up, ForceMode.VelocityChange);
+        }
+
+        public void Crouch(bool isCrouch)
+        {
+            var rate = Time.deltaTime * _crouchRate;
+            var yScale = isCrouch || !_grounded ? 0.5f : 1;
+            var nextScale = Vector3.Lerp(_modelTransform.localScale, new Vector3(1, yScale, 1), rate);
+
+            _modelTransform.localScale = nextScale;
         }
 
         private void AddHorizontalDrag(float friction)

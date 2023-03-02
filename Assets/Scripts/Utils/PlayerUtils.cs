@@ -4,10 +4,10 @@ namespace Utils
 {
     public static class PlayerUtils
     {
-        private const float MaxGroundAngle = 45f;
+        private const float MaxAngle = 45f;
         private const float MaxSpeed = 5f;
 
-        public static bool CheckCanJump(ContactPoint[] contacts, float maxAngel = MaxGroundAngle)
+        public static bool CheckCanJump(ContactPoint[] contacts, float maxAngel = MaxAngle)
         {
             var canJump = false;
 
