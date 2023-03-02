@@ -12,10 +12,14 @@ public class PlayerRoot : MonoBehaviour
 
     private PlayerPresenter _playerPresenter;
     private PlayerModel _playerModel;
+    private PlayerInput _playerInput;
+
+    public PlayerInput PlayerInput => _playerInput;
 
     private void Awake()
     {
-        _playerModel = new PlayerModel(_moveForce, _horizontalFriction, _jumpForce);
+        _playerInput = new PlayerInput();
+        _playerModel = new PlayerModel(_playerInput, _moveForce, _horizontalFriction, _jumpForce);
         _playerPresenter = new PlayerPresenter(_playerView, _playerModel);
     }
 

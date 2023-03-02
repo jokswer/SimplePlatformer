@@ -9,6 +9,7 @@ namespace Player
         public Vector2 Move => _inputActions.Player.Move.ReadValue<Vector2>();
         public bool IsJumped => _inputActions.Player.Jump.WasPressedThisFrame();
         public bool IsCrouched => _inputActions.Player.Crouch.IsInProgress();
+        public Vector2 MousePosition => _inputActions.Player.Mouse.ReadValue<Vector2>();
 
         public PlayerInput()
         {

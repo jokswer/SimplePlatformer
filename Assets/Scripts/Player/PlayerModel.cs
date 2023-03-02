@@ -12,10 +12,9 @@ namespace Player
         public float JumpForce => _playerInput.IsJumped ? _jumpForce : 0;
         public bool IsCrouched => _playerInput.IsCrouched;
 
-        public PlayerModel(float moveForce, float horizontalFriction, float jumpForce)
+        public PlayerModel(PlayerInput playerInput, float moveForce, float horizontalFriction, float jumpForce)
         {
-            _playerInput = new PlayerInput();
-            
+            _playerInput = playerInput;
             _moveForce = moveForce;
             _horizontalFriction = horizontalFriction;
             _jumpForce = jumpForce;
