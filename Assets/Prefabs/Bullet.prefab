@@ -149,7 +149,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _speed: 20
   _lfeTime: 4
-  _effectPrefab: {fileID: 0}
 --- !u!1 &3445682578189884082
 GameObject:
   m_ObjectHideFlags: 0
@@ -167,7 +166,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &9115376973234673538
 Transform:
   m_ObjectHideFlags: 0

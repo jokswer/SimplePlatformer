@@ -15,6 +15,7 @@ namespace Player
 
         public void Update()
         {
+            _playerView.Rotate();
             _playerView.Jump(_playerModel.JumpForce);
             _playerView.Crouch(_playerModel.IsCrouched);
         }

@@ -1959,7 +1959,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _modelTransform: {fileID: 19051989}
+  _bodyModel: {fileID: 763514821}
+  _aim: {fileID: 966215878}
   _crouchRate: 15
+  _rotateRate: 20
 --- !u!75 &1782649250
 ConstantForce:
   m_ObjectHideFlags: 0
