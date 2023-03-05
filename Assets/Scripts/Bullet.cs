@@ -1,4 +1,3 @@
-using System;
 using System.Collections;
 using UnityEngine;
 using UnityEngine.Pool;
@@ -10,12 +9,14 @@ public class Bullet : MonoBehaviour
     [SerializeField] private float _lfeTime = 3f;
 
     private Rigidbody _rigidbody;
-    private IObjectPool<Bullet> _pool;
+    private IObjectPool<Bullet> _bulletsPool;
+    private IObjectPool<Hit> _hitsPool;
 
-    public void Init(IObjectPool<Bullet> pool)
+    public void Init(IObjectPool<Bullet> bulletsPool, IObjectPool<Hit> hitsPool)
     {
         _rigidbody = GetComponent<Rigidbody>();
-        _pool = pool;
+        _bulletsPool = bulletsPool;
+        _hitsPool = hitsPool;
     }
 
     public void OnGet(Transform spawn)
@@ -29,16 +30,23 @@ public class Bullet : MonoBehaviour
         StartCoroutine(AutoRelease());
     }
 
+    private void UseEffect()
+    {
+        var hit = _hitsPool.Get();
+        hit.OnGet(transform.position);
+    }
+
     private IEnumerator AutoRelease()
     {
         yield return new WaitForSeconds(_lfeTime);
      
         if(gameObject.activeSelf)
-            _pool?.Release(this);
+            _bulletsPool?.Release(this);
     }
 
     private void OnCollisionEnter()
     {
-        _pool?.Release(this);
+        _bulletsPool?.Release(this);
+        UseEffect();
     }
 }

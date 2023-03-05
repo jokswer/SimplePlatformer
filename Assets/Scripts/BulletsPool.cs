@@ -5,6 +5,7 @@ public class BulletsPool : MonoBehaviour
 {
     [SerializeField] private Bullet _bulletPrefab;
     [SerializeField] private Transform _spawnPoint;
+    [SerializeField] private HitsPool _hitsPool;
 
     private ObjectPool<Bullet> _pool;
 
@@ -34,7 +35,7 @@ public class BulletsPool : MonoBehaviour
     private Bullet CreateBullet()
     {
         var bullet = Instantiate(_bulletPrefab, _spawnPoint.position, _spawnPoint.rotation, transform);
-        bullet.Init(_pool);
+        bullet.Init(_pool, _hitsPool.Pool);
 
         return bullet;
     }
