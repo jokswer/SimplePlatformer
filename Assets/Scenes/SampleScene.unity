@@ -830,11 +830,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4000012622215710, guid: a6b2784883dec4c419faced2142d45ba, type: 3}
       propertyPath: m_LocalRotation.w
-      value: 0.9983044
+      value: 0.9963848
       objectReference: {fileID: 0}
     - target: {fileID: 4000012622215710, guid: a6b2784883dec4c419faced2142d45ba, type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0.05820937
+      value: 0.08495506
       objectReference: {fileID: 0}
     - target: {fileID: 4000012622215710, guid: a6b2784883dec4c419faced2142d45ba, type: 3}
       propertyPath: m_LocalRotation.y
@@ -846,7 +846,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4000012622215710, guid: a6b2784883dec4c419faced2142d45ba, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
-      value: 6.674
+      value: 9.747
       objectReference: {fileID: 0}
     - target: {fileID: 4000012622215710, guid: a6b2784883dec4c419faced2142d45ba, type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
@@ -1963,6 +1963,7 @@ MonoBehaviour:
   _aim: {fileID: 966215878}
   _crouchRate: 15
   _rotateRate: 20
+  _maxRotateAngel: 30
 --- !u!75 &1782649250
 ConstantForce:
   m_ObjectHideFlags: 0
