@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using UnityEngine;
 using UnityEngine.Pool;
@@ -6,8 +7,7 @@ using UnityEngine.Pool;
 public class Bullet : MonoBehaviour
 {
     [SerializeField] private float _speed = 20;
-    [SerializeField] private float _lfeTime = 4f;
-    [SerializeField] private TrailRenderer _trailRenderer;
+    [SerializeField] private float _lfeTime = 3f;
 
     private Rigidbody _rigidbody;
     private IObjectPool<Bullet> _pool;
@@ -20,9 +20,9 @@ public class Bullet : MonoBehaviour
 
     public void OnGet(Transform spawn)
     {
-        transform.position = spawn.position;
-        transform.rotation = spawn.rotation;
-
+        _rigidbody.MovePosition(spawn.position);
+        _rigidbody.MoveRotation(spawn.rotation);
+        
         if (_rigidbody)
             _rigidbody.velocity = _speed * spawn.forward;
 
@@ -36,12 +36,7 @@ public class Bullet : MonoBehaviour
         if(gameObject.activeSelf)
             _pool?.Release(this);
     }
-    
-    private void OnDisable()
-    {
-        _trailRenderer.Clear();
-    }
-    
+
     private void OnCollisionEnter()
     {
         _pool?.Release(this);

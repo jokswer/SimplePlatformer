@@ -148,6 +148,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _speed: 20
+  _lfeTime: 4
   _trailRenderer: {fileID: 8083831614086158776}
 --- !u!1 &3445682578189884082
 GameObject:
@@ -159,6 +160,7 @@ GameObject:
   m_Component:
   - component: {fileID: 9115376973234673538}
   - component: {fileID: 8083831614086158776}
+  - component: {fileID: 4315881656160115868}
   m_Layer: 0
   m_Name: Trail
   m_TagString: Untagged
@@ -303,3 +305,15 @@ TrailRenderer:
   m_Autodestruct: 0
   m_Emitting: 1
   m_ApplyActiveColorSpace: 1
+--- !u!114 &4315881656160115868
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3445682578189884082}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cc7e51df8cd244e33a675cc19896e170, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
