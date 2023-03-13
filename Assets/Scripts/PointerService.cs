@@ -14,7 +14,7 @@ public class PointerService : MonoBehaviour
         _plane = new Plane(Vector3.back, Vector3.zero);
     }
 
-    private void Update()
+    private void LateUpdate()
     {
         TransformAim();
         RotateGun();

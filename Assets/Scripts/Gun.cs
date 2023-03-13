@@ -22,6 +22,7 @@ public class Gun : MonoBehaviour
         if (_playerRoot.PlayerInput.IsShooting)
         {
             _timer = 0;
+            
             _bulletsPool.Pool.Get();
             _shotSound.Play();
             _flash.SetActive(true);

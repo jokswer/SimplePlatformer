@@ -6,7 +6,7 @@ using UnityEngine.Pool;
 public class Bullet : MonoBehaviour
 {
     [SerializeField] private float _speed = 20;
-    [SerializeField] private float _lfeTime = 3f;
+    [SerializeField] private float _lifeTime = 3f;
 
     private Rigidbody _rigidbody;
     private IObjectPool<Bullet> _bulletsPool;
@@ -38,7 +38,7 @@ public class Bullet : MonoBehaviour
 
     private IEnumerator AutoRelease()
     {
-        yield return new WaitForSeconds(_lfeTime);
+        yield return new WaitForSeconds(_lifeTime);
      
         if(gameObject.activeSelf)
             _bulletsPool?.Release(this);

@@ -28,7 +28,7 @@ namespace Utils
         public static float GetSpeedMultiplier(float velocity, float force, bool grounded = true,
             float maxSpeed = MaxSpeed)
         {
-            if (Mathf.Abs(velocity) > maxSpeed && Mathf.Abs(force) > 0)
+            if (Mathf.Abs(velocity) > maxSpeed && Mathf.Abs(force) > 0 && !grounded)
                 return 0f;
 
             if (!grounded)
