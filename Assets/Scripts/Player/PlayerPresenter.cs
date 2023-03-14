@@ -1,3 +1,7 @@
+using Player.Models;
+using Player.Views;
+using UnityEngine;
+
 namespace Player
 {
     public class PlayerPresenter
@@ -26,11 +30,17 @@ namespace Player
         public void OnEnable()
         {
             _playerModel.OnEnable();
+            _playerView.PlayerHealth.OnAddHealth += _playerModel.PlayerHealth.AddHealth;
+            _playerView.PlayerHealth.OnTakeDamage += _playerModel.PlayerHealth.TakeDamage;
+            _playerView.PlayerHealth.OnStopInvulnerable += _playerModel.PlayerHealth.StopInvulnerable;
         }
 
         public void OnDisable()
         {
             _playerModel.OnDisable();
+            _playerView.PlayerHealth.OnAddHealth -= _playerModel.PlayerHealth.AddHealth;
+            _playerView.PlayerHealth.OnTakeDamage -= _playerModel.PlayerHealth.TakeDamage;
+            _playerView.PlayerHealth.OnStopInvulnerable -= _playerModel.PlayerHealth.StopInvulnerable;
         }
     }
 }

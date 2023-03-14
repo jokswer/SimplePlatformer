@@ -1,9 +1,9 @@
 using UnityEngine;
 using Utils;
 
-namespace Player
+namespace Player.Views
 {
-    [RequireComponent(typeof(Rigidbody))]
+    [RequireComponent(typeof(Rigidbody), typeof(PlayerHealthView))]
     public class PlayerView : MonoBehaviour
     {
         [SerializeField] private Transform _modelTransform;
@@ -14,11 +14,15 @@ namespace Player
         [SerializeField] private float _maxRotateAngel = 30f;
 
         private Rigidbody _rigidbody;
+        private PlayerHealthView _playerHealth;
         private bool _grounded = true;
 
-        private void Start()
+        public PlayerHealthView PlayerHealth => _playerHealth;
+
+        public void HandleAwake()
         {
             _rigidbody = GetComponent<Rigidbody>();
+            _playerHealth = GetComponent<PlayerHealthView>();
         }
 
         private void OnCollisionStay(Collision collisionInfo)
