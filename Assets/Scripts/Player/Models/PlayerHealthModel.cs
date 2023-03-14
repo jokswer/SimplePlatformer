@@ -1,5 +1,4 @@
 using System;
-using UnityEngine;
 
 namespace Player.Models
 {
@@ -10,6 +9,7 @@ namespace Player.Models
 
         public bool IsInvulnerable { get; private set; }
         public Action OnDie;
+        public Action<int> OnHealthChange;
 
         public PlayerHealthModel(int maxHealth, int health)
         {
@@ -30,8 +30,8 @@ namespace Player.Models
             }
 
             IsInvulnerable = true;
-
-            Debug.Log(_health);
+            
+            OnHealthChange?.Invoke(_health);
             return true;
         }
 
@@ -43,8 +43,8 @@ namespace Player.Models
             {
                 _health = _maxHealth;
             }
-
-            Debug.Log(_health);
+            
+            OnHealthChange?.Invoke(_health);
         }
 
         public void StopInvulnerable()
