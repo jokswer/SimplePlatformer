@@ -15,9 +15,9 @@ namespace Player.Models
         public PlayerHealthModel PlayerHealth => _playerHealthModel;
 
         public PlayerModel(PlayerInput playerInput, float moveForce, float horizontalFriction, float jumpForce,
-            int health, int maxHealth)
+            int health, int maxHealth, float invulnerableTime)
         {
-            _playerHealthModel = new PlayerHealthModel(maxHealth, health);
+            _playerHealthModel = new PlayerHealthModel(maxHealth, health, invulnerableTime);
             
             _playerInput = playerInput;
             _moveForce = moveForce;

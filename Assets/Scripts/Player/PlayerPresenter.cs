@@ -32,7 +32,6 @@ namespace Player
             _playerModel.OnEnable();
             _playerView.PlayerHealth.OnAddHealth += _playerModel.PlayerHealth.AddHealth;
             _playerView.PlayerHealth.OnTakeDamage += _playerModel.PlayerHealth.TakeDamage;
-            _playerView.PlayerHealth.OnStopInvulnerable += _playerModel.PlayerHealth.StopInvulnerable;
         }
 
         public void OnDisable()
@@ -40,7 +39,6 @@ namespace Player
             _playerModel.OnDisable();
             _playerView.PlayerHealth.OnAddHealth -= _playerModel.PlayerHealth.AddHealth;
             _playerView.PlayerHealth.OnTakeDamage -= _playerModel.PlayerHealth.TakeDamage;
-            _playerView.PlayerHealth.OnStopInvulnerable -= _playerModel.PlayerHealth.StopInvulnerable;
         }
     }
 }

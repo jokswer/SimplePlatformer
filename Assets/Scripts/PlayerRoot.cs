@@ -8,14 +8,15 @@ public class PlayerRoot : MonoBehaviour
 {
     [SerializeField] private PlayerView _playerView;
     [SerializeField] private HealthUI _healthUI;
+    [SerializeField] private DamageScreen _damageScreen;
 
     [Header("Player Config")] 
     [SerializeField] private float _moveForce = 5f;
-
     [SerializeField] private float _jumpForce = 10f;
     [SerializeField] private float _horizontalFriction = 1;
     [SerializeField] private int _maxHealth = 8;
     [SerializeField] private int _health = 4;
+    [SerializeField] private float _invulnerableTime = 1f;
 
     private PlayerPresenter _playerPresenter;
     private PlayerModel _playerModel;
@@ -25,11 +26,18 @@ public class PlayerRoot : MonoBehaviour
 
     private void Awake()
     {
+        _playerView.Init();
         _playerInput = new PlayerInput();
-        _playerView.HandleAwake();
-        _playerModel = new PlayerModel(_playerInput, _moveForce, _horizontalFriction, _jumpForce, _health, _maxHealth);
+        _playerModel = new PlayerModel(
+            _playerInput,
+            _moveForce, 
+            _horizontalFriction, 
+            _jumpForce, 
+            _health, 
+            _maxHealth,
+            _invulnerableTime);
         _playerPresenter = new PlayerPresenter(_playerView, _playerModel);
-        
+
         _healthUI.Setup(_maxHealth, _health);
     }
 
@@ -47,11 +55,13 @@ public class PlayerRoot : MonoBehaviour
     {
         _playerPresenter.OnEnable();
         _playerModel.PlayerHealth.OnHealthChange += _healthUI.Change;
+        _playerModel.PlayerHealth.OnTakeDamage += _damageScreen.StartEffect;
     }
 
     private void OnDisable()
     {
         _playerPresenter.OnDisable();
         _playerModel.PlayerHealth.OnHealthChange -= _healthUI.Change;
+        _playerModel.PlayerHealth.OnTakeDamage -= _damageScreen.StartEffect;
     }
 }

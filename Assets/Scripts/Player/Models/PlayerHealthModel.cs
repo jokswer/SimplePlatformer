@@ -1,38 +1,35 @@
 using System;
+using UnityEngine;
 
 namespace Player.Models
 {
     public class PlayerHealthModel
     {
+        private float _invulnerableTime;
         private int _maxHealth;
         private int _health;
+        private float _lastDamageTime = 0f;
 
-        public bool IsInvulnerable { get; private set; }
         public Action OnDie;
         public Action<int> OnHealthChange;
+        public Action OnTakeDamage;
 
-        public PlayerHealthModel(int maxHealth, int health)
+        public PlayerHealthModel(int maxHealth, int health, float invulnerableTime)
         {
             _maxHealth = maxHealth;
             _health = health;
+            _invulnerableTime = invulnerableTime;
         }
 
-        public bool TakeDamage(int damage = 1)
+        public void TakeDamage(int damage = 1)
         {
-            if (IsInvulnerable) return false;
+            var difference = Time.time - _lastDamageTime;
 
-            _health -= damage;
-
-            if (_health <= 0)
+            if (difference > _invulnerableTime)
             {
-                _health = 0;
-                OnDie?.Invoke();
+                _lastDamageTime = Time.time;
+                RemoveHealth(damage);
             }
-
-            IsInvulnerable = true;
-            
-            OnHealthChange?.Invoke(_health);
-            return true;
         }
 
         public void AddHealth(int health)
@@ -47,9 +44,19 @@ namespace Player.Models
             OnHealthChange?.Invoke(_health);
         }
 
-        public void StopInvulnerable()
+        private void RemoveHealth(int value)
         {
-            IsInvulnerable = false;
+            _health -= value;
+
+            if (_health <= 0)
+            {
+                _health = 0;
+                OnDie?.Invoke();
+            }
+            
+            OnHealthChange?.Invoke(_health);
+            OnTakeDamage?.Invoke();
         }
+        
     }
 }

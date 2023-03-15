@@ -15,14 +15,26 @@ namespace Player.Views
 
         private Rigidbody _rigidbody;
         private PlayerHealthView _playerHealth;
+        private Blink _blink;
         private bool _grounded = true;
 
         public PlayerHealthView PlayerHealth => _playerHealth;
 
-        public void HandleAwake()
+        public void Init()
         {
             _rigidbody = GetComponent<Rigidbody>();
             _playerHealth = GetComponent<PlayerHealthView>();
+            _blink = GetComponent<Blink>();
+        }
+
+        private void OnEnable()
+        {
+            _playerHealth.OnTakeDamage += _blink.StartBlink;
+        }
+        
+        private void OnDisable()
+        {
+            _playerHealth.OnTakeDamage -= _blink.StartBlink;
         }
 
         private void OnCollisionStay(Collision collisionInfo)
