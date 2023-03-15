@@ -21,13 +21,22 @@ public class Bullet : MonoBehaviour
 
     public void OnGet(Transform spawn)
     {
-        _rigidbody.MovePosition(spawn.position);
-        _rigidbody.MoveRotation(spawn.rotation);
+        ClearPosition(spawn);
         
+        gameObject.SetActive(true);
+
         if (_rigidbody)
             _rigidbody.velocity = _speed * spawn.forward;
 
         StartCoroutine(AutoRelease());
+    }
+
+    private void ClearPosition(Transform spawn)
+    {
+        transform.position = spawn.position;
+        transform.rotation = spawn.rotation;
+        _rigidbody.MovePosition(spawn.position);
+        _rigidbody.MoveRotation(spawn.rotation);
     }
 
     private void UseEffect()
@@ -39,13 +48,15 @@ public class Bullet : MonoBehaviour
     private IEnumerator AutoRelease()
     {
         yield return new WaitForSeconds(_lifeTime);
-     
-        if(gameObject.activeSelf)
+
+        if (gameObject.activeSelf)
             _bulletsPool?.Release(this);
     }
 
     private void OnCollisionEnter()
     {
+        if (!gameObject.activeSelf) return;
+        
         _bulletsPool?.Release(this);
         UseEffect();
     }

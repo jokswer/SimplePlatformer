@@ -28,7 +28,6 @@ public class BulletsPool : MonoBehaviour
 
     private void OnGetBullet(Bullet bullet)
     {
-        bullet.gameObject.SetActive(true);
         bullet.OnGet(_spawnPoint);
     }
 
