@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 2692865944250861627}
   - component: {fileID: 2692865944250861626}
   - component: {fileID: 2692865944250861625}
+  - component: {fileID: 1392754475460568741}
   m_Layer: 0
   m_Name: HealthLoot
   m_TagString: Untagged
@@ -32,7 +33,7 @@ Transform:
   m_Children:
   - {fileID: 2509703676618466806}
   m_Father: {fileID: 0}
-  m_RootOrder: 9
+  m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!135 &2692865944250861626
 SphereCollider:
@@ -67,6 +68,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0e811f332d4aa4838b059bbe953c2933, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _healthValue: 1
+--- !u!114 &1392754475460568741
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2692865944250861604}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ee9a3e15b406740b6a4a3870f039c5d2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _rotateSpeed: {x: 0, y: 200, z: 0}
 --- !u!1001 &2692865944319459869
 PrefabInstance:
   m_ObjectHideFlags: 0
