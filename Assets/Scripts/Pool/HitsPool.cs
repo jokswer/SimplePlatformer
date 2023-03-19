@@ -3,38 +3,34 @@ using UnityEngine.Pool;
 
 namespace Pool
 {
-    public class HitsPool : MonoBehaviour
+    public class HitsPool : BasePool<Hit>
     {
         [SerializeField] private Hit _hitPrefab;
 
-        private ObjectPool<Hit> _pool;
-
-        public IObjectPool<Hit> Pool => _pool;
-
         private void Awake()
         {
-            _pool = new ObjectPool<Hit>(CreateHit, OnGetHit, OnReleaseHit, OnDestroyHit);
+            Pool = new ObjectPool<Hit>(Create, OnGet, OnRelease, OnDestroyObject);
         }
 
-        private void OnDestroyHit(Hit hit)
+        protected override void OnDestroyObject(Hit hit)
         {
             Destroy(hit.gameObject);
         }
 
-        private void OnReleaseHit(Hit hit)
+        protected override void OnRelease(Hit hit)
         {
             hit.gameObject.SetActive(false);
         }
 
-        private void OnGetHit(Hit hit)
+        protected override void OnGet(Hit hit)
         {
             hit.gameObject.SetActive(true);
         }
 
-        private Hit CreateHit()
+        protected override Hit Create()
         {
             var hit = Instantiate(_hitPrefab, Vector3.zero, Quaternion.identity, transform);
-            hit.Init(_pool);
+            hit.Init(Pool);
 
             return hit;
         }

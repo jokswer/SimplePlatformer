@@ -6,6 +6,7 @@ namespace Enemy.Base
     public class EnemyHealth : MonoBehaviour
     {
         public UnityEvent OnTakeDamage;
+        public UnityEvent OnDie;
 
         [SerializeField] private int _health = 1;
 
@@ -17,7 +18,7 @@ namespace Enemy.Base
             {
                 Die();
             }
-            
+
             OnTakeDamage.Invoke();
         }
 
@@ -28,6 +29,16 @@ namespace Enemy.Base
 
         private void Die()
         {
+            //TODO: fix this
+            // if (OnDie.GetPersistentEventCount() != 0)
+            // {
+            //     OnDie.Invoke();
+            // }
+            // else
+            // {
+            //     Destroy(gameObject);
+            // }
+            
             Destroy(gameObject);
         }
     }

@@ -41,7 +41,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2602314015588158629}
-  - component: {fileID: 2602314015588158630}
+  - component: {fileID: 4512417816166931978}
   - component: {fileID: 7355783285801851390}
   - component: {fileID: 711461591877295596}
   - component: {fileID: 5368057643934465535}
@@ -62,15 +62,15 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2602314015588158628}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 2.418, y: 1.26, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 2602314015384836500}
   m_Father: {fileID: 0}
-  m_RootOrder: -1
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &2602314015588158630
+--- !u!114 &4512417816166931978
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -79,10 +79,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 2602314015588158628}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ee9a3e15b406740b6a4a3870f039c5d2, type: 3}
+  m_Script: {fileID: 11500000, guid: a2ac7b83ba6a4d0fbd6343f97b72b002, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _rotateSpeed: {x: 0, y: 0, z: 600}
+  _rotateSpeed: {x: 0, y: 0, z: 20}
 --- !u!114 &7355783285801851390
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -97,7 +97,34 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   OnTakeDamage:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 0}
+        m_TargetAssemblyTypeName: 
+        m_MethodName: 
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: 
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 0
+  OnDie:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 711461591877295596}
+        m_TargetAssemblyTypeName: Enemy.Carrot, Assembly-CSharp
+        m_MethodName: Release
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   _health: 1
 --- !u!114 &711461591877295596
 MonoBehaviour:

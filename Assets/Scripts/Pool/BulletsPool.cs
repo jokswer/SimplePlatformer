@@ -3,40 +3,36 @@ using UnityEngine.Pool;
 
 namespace Pool
 {
-    public class BulletsPool : MonoBehaviour
+    public class BulletsPool : BasePool<Bullet>
     {
         [SerializeField] private Bullet _bulletPrefab;
         [SerializeField] private Transform _spawnPoint;
         [SerializeField] private HitsPool _hitsPool;
 
-        private ObjectPool<Bullet> _pool;
-
-        public IObjectPool<Bullet> Pool => _pool;
-
         private void Awake()
         {
-            _pool = new ObjectPool<Bullet>(CreateBullet, OnGetBullet, OnReleaseBullet, OnDestroyBullet);
+            Pool = new ObjectPool<Bullet>(Create, OnGet, OnRelease, OnDestroyObject);
         }
 
-        private void OnDestroyBullet(Bullet bullet)
+        protected override void OnDestroyObject(Bullet bullet)
         {
             Destroy(bullet.gameObject);
         }
 
-        private void OnReleaseBullet(Bullet bullet)
+        protected override void OnRelease(Bullet bullet)
         {
             bullet.gameObject.SetActive(false);
         }
 
-        private void OnGetBullet(Bullet bullet)
+        protected override void OnGet(Bullet bullet)
         {
             bullet.OnGet(_spawnPoint);
         }
 
-        private Bullet CreateBullet()
+        protected override Bullet Create()
         {
             var bullet = Instantiate(_bulletPrefab, _spawnPoint.position, _spawnPoint.rotation, transform);
-            bullet.Init(_pool, _hitsPool.Pool);
+            bullet.Init(Pool, _hitsPool.Pool);
 
             return bullet;
         }

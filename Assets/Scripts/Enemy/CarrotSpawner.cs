@@ -1,3 +1,4 @@
+using Pool;
 using UnityEngine;
 
 namespace Enemy
@@ -5,11 +6,12 @@ namespace Enemy
     public class CarrotSpawner : MonoBehaviour
     {
         [SerializeField] private Transform _spawnPosition;
-        [SerializeField] private GameObject _carrotPrefab;
+        [SerializeField] private CarrotPool _carrotPool;
 
-        public void Crate()
+        public void Create()
         {
-            Instantiate(_carrotPrefab, _spawnPosition.position, Quaternion.identity);
+            var carrot = _carrotPool.Pool.Get();
+            carrot.OnGet(_spawnPosition);
         }
     }
 }
