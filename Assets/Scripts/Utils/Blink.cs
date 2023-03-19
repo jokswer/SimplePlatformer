@@ -20,7 +20,10 @@ namespace Utils
 
                 foreach (var renderer in _renderers)
                 {
-                    renderer.material.SetColor(_emissionColor, new Color(r, 0, 0, 0));
+                    foreach (var material in renderer.materials)
+                    {
+                        material.SetColor(_emissionColor, new Color(r, 0, 0, 0));       
+                    }
                 }
 
                 yield return null;
@@ -33,7 +36,10 @@ namespace Utils
         {
             foreach (var renderer in _renderers)
             {
-                renderer.material.SetColor(_emissionColor, new Color(0, 0, 0, 0));
+                foreach (var material in renderer.materials)
+                {
+                    material.SetColor(_emissionColor, new Color(0, 0, 0, 0));       
+                }
             }
         }
     }

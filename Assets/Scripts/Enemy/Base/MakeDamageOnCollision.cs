@@ -1,7 +1,7 @@
 using Player.Views;
 using UnityEngine;
 
-namespace EnemyBase
+namespace Enemy.Base
 {
     public class MakeDamageOnCollision : MonoBehaviour
     {

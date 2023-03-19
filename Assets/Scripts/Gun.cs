@@ -1,4 +1,6 @@
 using System.Collections;
+using Player;
+using Pool;
 using UnityEngine;
 
 public class Gun : MonoBehaviour

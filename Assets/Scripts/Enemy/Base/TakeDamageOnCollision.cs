@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace EnemyBase
+namespace Enemy.Base
 {
     [RequireComponent(typeof(EnemyHealth))]
     public class TakeDamageOnCollision : MonoBehaviour
