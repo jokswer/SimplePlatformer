@@ -13,6 +13,7 @@ namespace Player.Models
         public Action OnDie;
         public Action<int> OnHealthChange;
         public Action OnTakeDamage;
+        public Action OnTakeHealth;
 
         public PlayerHealthModel(int maxHealth, int health, float invulnerableTime)
         {
@@ -42,6 +43,7 @@ namespace Player.Models
             }
             
             OnHealthChange?.Invoke(_health);
+            OnTakeHealth?.Invoke();
         }
 
         private void RemoveHealth(int value)

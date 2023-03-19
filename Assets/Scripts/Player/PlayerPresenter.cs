@@ -32,6 +32,7 @@ namespace Player
             _playerModel.OnEnable();
             _playerView.PlayerHealth.OnAddHealth += _playerModel.PlayerHealth.AddHealth;
             _playerView.PlayerHealth.OnTakeDamage += _playerModel.PlayerHealth.TakeDamage;
+            _playerModel.PlayerHealth.OnTakeDamage += _playerView.PlayerBlink.StartBlink;
         }
 
         public void OnDisable()
@@ -39,6 +40,7 @@ namespace Player
             _playerModel.OnDisable();
             _playerView.PlayerHealth.OnAddHealth -= _playerModel.PlayerHealth.AddHealth;
             _playerView.PlayerHealth.OnTakeDamage -= _playerModel.PlayerHealth.TakeDamage;
+            _playerModel.PlayerHealth.OnTakeDamage -= _playerView.PlayerBlink.StartBlink;
         }
     }
 }

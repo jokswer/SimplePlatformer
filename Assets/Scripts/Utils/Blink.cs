@@ -10,7 +10,7 @@ namespace Utils
         [SerializeField] private float _effectTime = 1f;
         [SerializeField] private Renderer[] _renderers;
 
-        public void StartBlink(int arg) => StartCoroutine(StartEffect());
+        public void StartBlink() => StartCoroutine(StartEffect());
 
         private IEnumerator StartEffect()
         {

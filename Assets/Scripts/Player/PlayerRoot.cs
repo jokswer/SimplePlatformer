@@ -10,6 +10,8 @@ namespace Player
         [SerializeField] private PlayerView _playerView;
         [SerializeField] private HealthUI _healthUI;
         [SerializeField] private DamageScreen _damageScreen;
+        [SerializeField] private AudioSource _damageAudio;
+        [SerializeField] private AudioSource _pickUpHealthAudio;
 
         [Header("Player Config")] 
         [SerializeField] private float _moveForce = 5f;
@@ -57,6 +59,8 @@ namespace Player
             _playerPresenter.OnEnable();
             _playerModel.PlayerHealth.OnHealthChange += _healthUI.Change;
             _playerModel.PlayerHealth.OnTakeDamage += _damageScreen.StartEffect;
+            _playerModel.PlayerHealth.OnTakeDamage += _damageAudio.Play;
+            _playerModel.PlayerHealth.OnTakeHealth += _pickUpHealthAudio.Play;
         }
 
         private void OnDisable()
@@ -64,6 +68,8 @@ namespace Player
             _playerPresenter.OnDisable();
             _playerModel.PlayerHealth.OnHealthChange -= _healthUI.Change;
             _playerModel.PlayerHealth.OnTakeDamage -= _damageScreen.StartEffect;
+            _playerModel.PlayerHealth.OnTakeDamage -= _damageAudio.Play;
+            _playerModel.PlayerHealth.OnTakeHealth -= _pickUpHealthAudio.Play;
         }
     }
 }

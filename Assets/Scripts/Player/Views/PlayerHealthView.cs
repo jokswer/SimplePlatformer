@@ -7,7 +7,7 @@ namespace Player.Views
     {
         public Action<int> OnAddHealth;
         public Action<int> OnTakeDamage;
-        
+
         public void AddHealth(int value)
         {
             OnAddHealth?.Invoke(value);
