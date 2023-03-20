@@ -3359,11 +3359,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Rabbit
       objectReference: {fileID: 0}
-    - target: {fileID: 5372872120870145766, guid: 8feda6bdf69ea4d6d8c009f0e6486d01,
-        type: 3}
-      propertyPath: _attackPeriod
-      value: 3
-      objectReference: {fileID: 0}
     - target: {fileID: 5372872120870145767, guid: 8feda6bdf69ea4d6d8c009f0e6486d01,
         type: 3}
       propertyPath: m_RootOrder
