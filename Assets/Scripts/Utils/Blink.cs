@@ -18,27 +18,21 @@ namespace Utils
             {
                 var r = Mathf.Sin(t * 30) * 0.5f + 0.5f;
 
-                foreach (var renderer in _renderers)
-                {
-                    foreach (var material in renderer.materials)
-                    {
-                        material.SetColor(_emissionColor, new Color(r, 0, 0, 0));       
-                    }
-                }
+                SetEmissionColor(new Color(r, 0, 0, 0));
 
                 yield return null;
             }
             
-            ClearRenderers();
+            SetEmissionColor(Color.clear);
         }
 
-        private void ClearRenderers()
+        private void SetEmissionColor(Color color)
         {
             foreach (var renderer in _renderers)
             {
                 foreach (var material in renderer.materials)
                 {
-                    material.SetColor(_emissionColor, new Color(0, 0, 0, 0));       
+                    material.SetColor(_emissionColor, color);       
                 }
             }
         }

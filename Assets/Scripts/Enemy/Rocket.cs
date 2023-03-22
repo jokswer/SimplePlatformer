@@ -1,3 +1,4 @@
+using Enemy.Base;
 using Player.Views;
 using Pool;
 using UnityEngine;
@@ -5,6 +6,7 @@ using UnityEngine.Pool;
 
 namespace Enemy
 {
+    [RequireComponent(typeof(EnemyHealth))]
     public class Rocket : MonoBehaviour, IPoolObject
     {
         [SerializeField] private float _speed = 5f;
@@ -12,9 +14,11 @@ namespace Enemy
 
         private Transform _playerTransform;
         private IObjectPool<Rocket> _pool;
+        private EnemyHealth _enemyHealth;
 
         public void Init(IObjectPool<Rocket> pool)
         {
+            _enemyHealth = GetComponent<EnemyHealth>();
             _playerTransform = FindObjectOfType<PlayerView>().transform;
             _pool = pool;
         }
@@ -41,13 +45,14 @@ namespace Enemy
         public void OnGet(Transform spawn)
         {
             transform.position = spawn.position;
-            transform.rotation = spawn.rotation;
+            transform.rotation = Quaternion.identity;
         }
         
         public void Release()
         {
             if (gameObject.activeSelf)
             {
+                _enemyHealth.ResetHealth();
                 _pool.Release(this);
             }
         }

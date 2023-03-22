@@ -8,7 +8,14 @@ namespace Enemy.Base
         public UnityEvent OnTakeDamage;
         public UnityEvent OnDie;
 
+        [SerializeField] private bool _destroy = true;
         [SerializeField] private int _health = 1;
+        private int _maxHealth;
+
+        private void Start()
+        {
+            _health = _maxHealth;
+        }
 
         public void TakeDamage(int damage = 1)
         {
@@ -27,19 +34,19 @@ namespace Enemy.Base
             TakeDamage(_health);
         }
 
+        public void ResetHealth()
+        {
+            _health = _maxHealth;
+        }
+
         private void Die()
         {
-            //TODO: fix this
-            // if (OnDie.GetPersistentEventCount() != 0)
-            // {
-            //     OnDie.Invoke();
-            // }
-            // else
-            // {
-            //     Destroy(gameObject);
-            // }
+            OnDie.Invoke();
             
-            Destroy(gameObject);
+            if (_destroy)
+            {
+                Destroy(gameObject);
+            }
         }
     }
 }
