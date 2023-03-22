@@ -15,6 +15,7 @@ GameObject:
   - component: {fileID: 989867955}
   - component: {fileID: 989867957}
   - component: {fileID: 1849846021}
+  - component: {fileID: 2005735744}
   m_Layer: 0
   m_Name: Rabbit
   m_TagString: Untagged
@@ -77,8 +78,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c73103a557ce422f840c700b8b06afac, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _attackPeriod: 3
+  _period: 5
   _animator: {fileID: 5372872122160469253}
+  _triggerName: Attack
 --- !u!114 &989867956
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -122,6 +124,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 94e2002d1b374c3c8f61ba5bfde08196, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _dieOnAnyCollision: 0
 --- !u!114 &989867957
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -163,6 +166,21 @@ MonoBehaviour:
   - {fileID: 2575305381446310805}
   - {fileID: 8891541383456118801}
   - {fileID: 2002221484396893343}
+--- !u!114 &2005735744
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5372872120870145764}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2c86c9f8622d42b6b02a70045e0a562f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _rightEuler: {x: 0, y: -150, z: 0}
+  _leftEuler: {x: 0, y: -30, z: 0}
+  _rotationSpeed: 5
 --- !u!1 &5372872121032794993
 GameObject:
   m_ObjectHideFlags: 0

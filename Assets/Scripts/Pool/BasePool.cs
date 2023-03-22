@@ -3,10 +3,10 @@ using UnityEngine.Pool;
 
 namespace Pool
 {
-    public abstract class BasePool<T> : MonoBehaviour where T : class
+    public abstract class BasePool<T> : MonoBehaviour where T : class, IPoolObject
     {
         private IObjectPool<T> _pool;
-
+        
         public IObjectPool<T> Pool
         {
             get => _pool;

@@ -1,11 +1,12 @@
 using Player.Views;
+using Pool;
 using UnityEngine;
 using UnityEngine.Pool;
 
 namespace Enemy
 {
     [RequireComponent(typeof(Rigidbody))]
-    public class Carrot : MonoBehaviour
+    public class Carrot : MonoBehaviour, IPoolObject
     {
         [SerializeField] private float _speed = 1;
 

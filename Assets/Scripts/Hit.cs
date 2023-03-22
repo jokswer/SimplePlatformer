@@ -1,9 +1,10 @@
 using System.Collections;
+using Pool;
 using UnityEngine;
 using UnityEngine.Pool;
 
 [RequireComponent(typeof(ParticleSystem))]
-public class Hit : MonoBehaviour
+public class Hit : MonoBehaviour, IPoolObject
 {
     private IObjectPool<Hit> _pool;
     private ParticleSystem _particleSystem;
@@ -15,9 +16,9 @@ public class Hit : MonoBehaviour
         _particleSystem = GetComponent<ParticleSystem>();
     }
 
-    public void OnGet(Vector3 position)
+    public void OnGet(Transform spawn)
     {
-        transform.position = position;
+        transform.position = spawn.position;
         _particleSystem.Play();
         
         StartCoroutine(AutoRelease());

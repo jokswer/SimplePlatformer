@@ -1,9 +1,10 @@
 using System.Collections;
+using Pool;
 using UnityEngine;
 using UnityEngine.Pool;
 
 [RequireComponent(typeof(Rigidbody))]
-public class Bullet : MonoBehaviour
+public class Bullet : MonoBehaviour, IPoolObject
 {
     [SerializeField] private float _speed = 20;
     [SerializeField] private float _lifeTime = 3f;
@@ -42,7 +43,7 @@ public class Bullet : MonoBehaviour
     private void UseEffect()
     {
         var hit = _hitsPool.Get();
-        hit.OnGet(transform.position);
+        hit.OnGet(transform);
     }
 
     private IEnumerator AutoRelease()
