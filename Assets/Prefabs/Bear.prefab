@@ -109,6 +109,7 @@ MonoBehaviour:
   OnDie:
     m_PersistentCalls:
       m_Calls: []
+  _destroy: 1
   _health: 5
 --- !u!114 &3859750318664527061
 MonoBehaviour:
@@ -166,8 +167,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2c86c9f8622d42b6b02a70045e0a562f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _rightEuler: {x: 0, y: -160, z: 0}
-  _leftEuler: {x: 0, y: -20, z: 0}
+  _rightEuler: {x: 0, y: -150, z: 0}
+  _leftEuler: {x: 0, y: -10, z: 0}
   _rotationSpeed: 5
 --- !u!54 &3859750318664527062
 Rigidbody:

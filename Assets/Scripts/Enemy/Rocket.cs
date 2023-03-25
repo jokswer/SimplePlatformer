@@ -45,7 +45,7 @@ namespace Enemy
         public void OnGet(Transform spawn)
         {
             transform.position = spawn.position;
-            transform.rotation = Quaternion.identity;
+            transform.rotation = spawn.rotation;
         }
         
         public void Release()

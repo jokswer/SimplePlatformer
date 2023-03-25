@@ -14,7 +14,7 @@ namespace Enemy.Base
 
         private void Start()
         {
-            _health = _maxHealth;
+            _maxHealth = _health;
         }
 
         public void TakeDamage(int damage = 1)

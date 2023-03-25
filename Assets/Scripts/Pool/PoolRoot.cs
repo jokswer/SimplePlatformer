@@ -4,8 +4,9 @@ using UnityEngine;
 
 public enum PoolType
 {
+    Acorn,
     Carrot,
-    Rocket
+    Rocket,
 }
 
 namespace Pool
@@ -14,6 +15,7 @@ namespace Pool
     {
         [SerializeField] private BasePool<Carrot> _carrotsPool;
         [SerializeField] private BasePool<Rocket> _rocketsPool;
+        [SerializeField] private BasePool<Acorn> _acornsPool;
 
         private static PoolRoot _instantiate;
         public PoolRoot Instantiate => _instantiate;
@@ -30,6 +32,7 @@ namespace Pool
         {
             return type switch
             {
+                PoolType.Acorn => _acornsPool.Pool.Get(),
                 PoolType.Carrot => _carrotsPool.Pool.Get(),
                 PoolType.Rocket => _rocketsPool.Pool.Get(),
                 _ => throw new ArgumentException()
