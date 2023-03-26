@@ -16,6 +16,7 @@ GameObject:
   - component: {fileID: 989867957}
   - component: {fileID: 1849846021}
   - component: {fileID: 2005735744}
+  - component: {fileID: 4271262781012474286}
   m_Layer: 0
   m_Name: Rabbit
   m_TagString: Untagged
@@ -182,6 +183,18 @@ MonoBehaviour:
   _rightEuler: {x: 0, y: -150, z: 0}
   _leftEuler: {x: 0, y: -30, z: 0}
   _rotationSpeed: 5
+--- !u!114 &4271262781012474286
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5372872120870145764}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fdb0281f11f5424e9f6d3822d46e6d16, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &5372872121032794993
 GameObject:
   m_ObjectHideFlags: 0
@@ -470,7 +483,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _spawnPosition: {fileID: 5372872121032794992}
-  _type: 0
+  _type: 1
 --- !u!4 &5556034320583635683 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: b896b4f452ee840389eac5411d488539,
