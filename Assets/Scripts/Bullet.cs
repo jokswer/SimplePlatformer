@@ -23,7 +23,7 @@ public class Bullet : MonoBehaviour, IPoolObject
     public void OnGet(Transform spawn)
     {
         ClearPosition(spawn);
-        
+
         gameObject.SetActive(true);
 
         if (_rigidbody)
@@ -56,8 +56,13 @@ public class Bullet : MonoBehaviour, IPoolObject
 
     private void OnCollisionEnter()
     {
+        Hit();
+    }
+
+    public void Hit()
+    {
         if (!gameObject.activeSelf) return;
-        
+
         _bulletsPool?.Release(this);
         UseEffect();
     }

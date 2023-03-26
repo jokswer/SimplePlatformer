@@ -24,6 +24,7 @@ namespace Enemy.Base
             if (rb != null && rb.TryGetComponent<Bullet>(out var bullet))
             {
                 _health.TakeDamage();
+                bullet.Hit();
             }
         }
     }
