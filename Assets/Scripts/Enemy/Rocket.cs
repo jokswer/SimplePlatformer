@@ -44,7 +44,7 @@ namespace Enemy
 
         public void OnGet(Transform spawn)
         {
-            transform.position = spawn.position;
+            transform.position = new Vector3(spawn.position.x, spawn.position.y, 0);
             transform.rotation = spawn.rotation;
         }
         

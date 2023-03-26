@@ -468,7 +468,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _spawnPosition: {fileID: 3859750318743612692}
-  _type: 1
+  _type: 2
 --- !u!23 &4465627163079492133 stripped
 MeshRenderer:
   m_CorrespondingSourceObject: {fileID: -8617199963915259879, guid: 22ae00b6d122d48ee8835a7dc7f172e4,
