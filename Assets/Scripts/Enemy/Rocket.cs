@@ -31,7 +31,9 @@ namespace Enemy
 
         private void Move()
         {
-            transform.position += _speed * Time.deltaTime * transform.forward;
+            var next = _speed * Time.deltaTime * transform.forward;
+            next.z = 0;
+            transform.position += next;
         }
 
         private void Rotate()

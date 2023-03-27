@@ -6,7 +6,6 @@ namespace Enemy
     public class EnemyVisibleService : MonoBehaviour
     {
         [SerializeField] private Transform _target;
-        [SerializeField] private float _maxDistance = 20f;
         [SerializeField] private float _checkRate = 0.5f;
 
         public ToggleEnemyVisible[] _enemies;
@@ -43,7 +42,7 @@ namespace Enemy
         {
             var distance = Vector3.Distance(enemy.transform.position, _target.position);
 
-            if (distance < _maxDistance)
+            if (distance < enemy.MaxDistance)
             {
                 enemy.Show();
             }
