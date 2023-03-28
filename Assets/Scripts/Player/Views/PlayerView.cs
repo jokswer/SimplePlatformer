@@ -15,16 +15,19 @@ namespace Player.Views
 
         private Rigidbody _rigidbody;
         private PlayerHealthView _playerHealth;
+        private PlayerArmoryView _playerArmory;
         private Blink _blink;
         private bool _grounded = true;
 
         public PlayerHealthView PlayerHealth => _playerHealth;
+        public PlayerArmoryView PlayerArmory => _playerArmory;
         public Blink PlayerBlink => _blink;
 
         public void Init()
         {
             _rigidbody = GetComponent<Rigidbody>();
             _playerHealth = GetComponent<PlayerHealthView>();
+            _playerArmory = GetComponent<PlayerArmoryView>();
             _blink = GetComponent<Blink>();
         }
 

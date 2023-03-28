@@ -12,7 +12,7 @@ namespace Player.Views
 
         private Dictionary<GunType, Gun> _gunsDictionary = new Dictionary<GunType, Gun>();
 
-        private void Start()
+        private void Awake()
         {
             ConfigDictionary();
             TakeGun(_currentGun);
@@ -39,7 +39,7 @@ namespace Player.Views
         public void TakeGun(GunType type)
         {
             _currentGun = type;
-            
+
             foreach (var key in _gunsDictionary.Keys)
             {
                 if (key == type)
@@ -50,6 +50,15 @@ namespace Player.Views
                 {
                     _gunsDictionary[key].Deactivate();
                 }
+            }
+        }
+
+        public void AddBullets(GunType type, int value)
+        {
+            if (_gunsDictionary[type] is IWithBullets gunWithBullets)
+            {
+                gunWithBullets.AddBullets(value);
+                TakeGun(type);
             }
         }
     }

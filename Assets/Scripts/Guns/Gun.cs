@@ -21,7 +21,7 @@ namespace Guns
         {
             _timer += Time.deltaTime;
 
-            if (!(_timer > _shotPeriod)) return;
+            if (_timer < _shotPeriod) return;
 
             if (_playerRoot.PlayerInput.IsShooting)
             {
