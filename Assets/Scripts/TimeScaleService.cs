@@ -23,7 +23,7 @@ public class TimeScaleService : MonoBehaviour
         else if (_playerRoot.PlayerInput.TimeScaleStop)
         {
             Time.timeScale = 1f;
-            Time.fixedDeltaTime = _startFixedDeltaTime * _timeScale;
+            Time.fixedDeltaTime = _startFixedDeltaTime;
         }
     }
 }
