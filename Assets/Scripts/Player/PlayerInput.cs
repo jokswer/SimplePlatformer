@@ -11,6 +11,7 @@ namespace Player
         public bool IsCrouched => _inputActions.Player.Crouch.IsInProgress();
         public Vector2 MousePosition => _inputActions.Player.MousePosition.ReadValue<Vector2>();
         public bool IsShooting => _inputActions.Player.Shot.IsInProgress();
+        public bool JumpGunIsUse => _inputActions.Player.JumpGun.WasPressedThisFrame();
 
         public PlayerInput()
         {

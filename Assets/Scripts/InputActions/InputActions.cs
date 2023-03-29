@@ -71,6 +71,15 @@ public partial class @InputActions : IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""JumpGun"",
+                    ""type"": ""Button"",
+                    ""id"": ""a7f94b8e-95e2-46e6-8855-7004069c00bf"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -216,6 +225,17 @@ public partial class @InputActions : IInputActionCollection2, IDisposable
                     ""action"": ""Shot"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""a40ff461-caa8-4bfc-979f-f708fb4b2403"",
+                    ""path"": ""<Keyboard>/leftShift"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""JumpGun"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -290,6 +310,7 @@ public partial class @InputActions : IInputActionCollection2, IDisposable
         m_Player_Crouch = m_Player.FindAction("Crouch ", throwIfNotFound: true);
         m_Player_MousePosition = m_Player.FindAction("MousePosition", throwIfNotFound: true);
         m_Player_Shot = m_Player.FindAction("Shot", throwIfNotFound: true);
+        m_Player_JumpGun = m_Player.FindAction("JumpGun", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -354,6 +375,7 @@ public partial class @InputActions : IInputActionCollection2, IDisposable
     private readonly InputAction m_Player_Crouch;
     private readonly InputAction m_Player_MousePosition;
     private readonly InputAction m_Player_Shot;
+    private readonly InputAction m_Player_JumpGun;
     public struct PlayerActions
     {
         private @InputActions m_Wrapper;
@@ -363,6 +385,7 @@ public partial class @InputActions : IInputActionCollection2, IDisposable
         public InputAction @Crouch => m_Wrapper.m_Player_Crouch;
         public InputAction @MousePosition => m_Wrapper.m_Player_MousePosition;
         public InputAction @Shot => m_Wrapper.m_Player_Shot;
+        public InputAction @JumpGun => m_Wrapper.m_Player_JumpGun;
         public InputActionMap Get() { return m_Wrapper.m_Player; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -387,6 +410,9 @@ public partial class @InputActions : IInputActionCollection2, IDisposable
                 @Shot.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnShot;
                 @Shot.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnShot;
                 @Shot.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnShot;
+                @JumpGun.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnJumpGun;
+                @JumpGun.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnJumpGun;
+                @JumpGun.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnJumpGun;
             }
             m_Wrapper.m_PlayerActionsCallbackInterface = instance;
             if (instance != null)
@@ -406,6 +432,9 @@ public partial class @InputActions : IInputActionCollection2, IDisposable
                 @Shot.started += instance.OnShot;
                 @Shot.performed += instance.OnShot;
                 @Shot.canceled += instance.OnShot;
+                @JumpGun.started += instance.OnJumpGun;
+                @JumpGun.performed += instance.OnJumpGun;
+                @JumpGun.canceled += instance.OnJumpGun;
             }
         }
     }
@@ -462,5 +491,6 @@ public partial class @InputActions : IInputActionCollection2, IDisposable
         void OnCrouch(InputAction.CallbackContext context);
         void OnMousePosition(InputAction.CallbackContext context);
         void OnShot(InputAction.CallbackContext context);
+        void OnJumpGun(InputAction.CallbackContext context);
     }
 }

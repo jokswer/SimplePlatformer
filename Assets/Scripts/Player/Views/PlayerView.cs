@@ -60,6 +60,11 @@ namespace Player.Views
             _rigidbody.AddForce(force * Vector3.up, ForceMode.VelocityChange);
         }
 
+        public void BoostJump(Vector3 position, float force)
+        {
+            _rigidbody.AddForce(position * force, ForceMode.VelocityChange);
+        }
+
         public void Crouch(bool isCrouch)
         {
             var rate = Time.deltaTime * _crouchRate;

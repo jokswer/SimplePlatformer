@@ -1,6 +1,5 @@
 using Player.Models;
 using Player.Views;
-using UnityEngine;
 
 namespace Player
 {
