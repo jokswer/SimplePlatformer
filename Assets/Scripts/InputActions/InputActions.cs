@@ -80,6 +80,15 @@ public partial class @InputActions : IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""TimeScale"",
+                    ""type"": ""Button"",
+                    ""id"": ""9c91f2bd-879d-4f06-a818-5d1e9608462b"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -236,6 +245,17 @@ public partial class @InputActions : IInputActionCollection2, IDisposable
                     ""action"": ""JumpGun"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""029badc8-b263-4fd1-a8e5-1a79a2172c42"",
+                    ""path"": ""<Mouse>/rightButton"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""TimeScale"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -311,6 +331,7 @@ public partial class @InputActions : IInputActionCollection2, IDisposable
         m_Player_MousePosition = m_Player.FindAction("MousePosition", throwIfNotFound: true);
         m_Player_Shot = m_Player.FindAction("Shot", throwIfNotFound: true);
         m_Player_JumpGun = m_Player.FindAction("JumpGun", throwIfNotFound: true);
+        m_Player_TimeScale = m_Player.FindAction("TimeScale", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -376,6 +397,7 @@ public partial class @InputActions : IInputActionCollection2, IDisposable
     private readonly InputAction m_Player_MousePosition;
     private readonly InputAction m_Player_Shot;
     private readonly InputAction m_Player_JumpGun;
+    private readonly InputAction m_Player_TimeScale;
     public struct PlayerActions
     {
         private @InputActions m_Wrapper;
@@ -386,6 +408,7 @@ public partial class @InputActions : IInputActionCollection2, IDisposable
         public InputAction @MousePosition => m_Wrapper.m_Player_MousePosition;
         public InputAction @Shot => m_Wrapper.m_Player_Shot;
         public InputAction @JumpGun => m_Wrapper.m_Player_JumpGun;
+        public InputAction @TimeScale => m_Wrapper.m_Player_TimeScale;
         public InputActionMap Get() { return m_Wrapper.m_Player; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -413,6 +436,9 @@ public partial class @InputActions : IInputActionCollection2, IDisposable
                 @JumpGun.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnJumpGun;
                 @JumpGun.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnJumpGun;
                 @JumpGun.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnJumpGun;
+                @TimeScale.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnTimeScale;
+                @TimeScale.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnTimeScale;
+                @TimeScale.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnTimeScale;
             }
             m_Wrapper.m_PlayerActionsCallbackInterface = instance;
             if (instance != null)
@@ -435,6 +461,9 @@ public partial class @InputActions : IInputActionCollection2, IDisposable
                 @JumpGun.started += instance.OnJumpGun;
                 @JumpGun.performed += instance.OnJumpGun;
                 @JumpGun.canceled += instance.OnJumpGun;
+                @TimeScale.started += instance.OnTimeScale;
+                @TimeScale.performed += instance.OnTimeScale;
+                @TimeScale.canceled += instance.OnTimeScale;
             }
         }
     }
@@ -492,5 +521,6 @@ public partial class @InputActions : IInputActionCollection2, IDisposable
         void OnMousePosition(InputAction.CallbackContext context);
         void OnShot(InputAction.CallbackContext context);
         void OnJumpGun(InputAction.CallbackContext context);
+        void OnTimeScale(InputAction.CallbackContext context);
     }
 }

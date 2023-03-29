@@ -12,6 +12,8 @@ namespace Player
         public Vector2 MousePosition => _inputActions.Player.MousePosition.ReadValue<Vector2>();
         public bool IsShooting => _inputActions.Player.Shot.IsInProgress();
         public bool JumpGunIsUse => _inputActions.Player.JumpGun.WasPressedThisFrame();
+        public bool TimeScaleStart => _inputActions.Player.TimeScale.WasPerformedThisFrame();
+        public bool TimeScaleStop => _inputActions.Player.TimeScale.WasReleasedThisFrame();
 
         public PlayerInput()
         {

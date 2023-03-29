@@ -37,7 +37,7 @@ namespace Guns
         {
             while (_cooldownTime < _cooldown)
             {
-                _cooldownTime += Time.deltaTime;
+                _cooldownTime += Time.unscaledDeltaTime;
                 _chargeUI.SetChargeValue(_cooldownTime, _cooldown);
                 yield return null;
             }
