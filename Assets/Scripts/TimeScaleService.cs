@@ -1,3 +1,4 @@
+using System;
 using Player;
 using UnityEngine;
 
@@ -25,5 +26,20 @@ public class TimeScaleService : MonoBehaviour
             Time.timeScale = 1f;
             Time.fixedDeltaTime = _startFixedDeltaTime;
         }
+    }
+
+    public void SetPauseTimeScale()
+    {
+        Time.timeScale = 0f;
+    }
+
+    public void SetGameTimeScale()
+    {
+        Time.timeScale = 1f;
+    }
+
+    private void OnDestroy()
+    {
+        Time.fixedDeltaTime = _startFixedDeltaTime;
     }
 }
