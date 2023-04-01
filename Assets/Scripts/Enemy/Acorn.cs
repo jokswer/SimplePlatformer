@@ -9,7 +9,7 @@ namespace Enemy
     [RequireComponent(typeof(Rigidbody), typeof(EnemyHealth))]
     public class Acorn : MonoBehaviour, IPoolObject
     {
-        [SerializeField] private Vector3 _force;
+        [SerializeField] private float _force;
         [SerializeField] private float _maxAngelSpeed;
         
         private Rigidbody _rigidbody;
@@ -23,17 +23,11 @@ namespace Enemy
             _pool = pool;
         }
 
-        private void OnDisable()
-        {
-            transform.rotation = Quaternion.identity;
-            _rigidbody.MoveRotation(Quaternion.identity);
-        }
-
         public void OnGet(Transform spawn)
         {
             ClearPosition(spawn);
 
-            _rigidbody.AddRelativeForce(_force, ForceMode.VelocityChange);
+            _rigidbody.AddForce(_force * transform.forward, ForceMode.VelocityChange);
             _rigidbody.angularVelocity = new Vector3(Random.Range(-_maxAngelSpeed, _maxAngelSpeed),
                 Random.Range(-_maxAngelSpeed, _maxAngelSpeed), Random.Range(-_maxAngelSpeed, _maxAngelSpeed));
         }
@@ -53,6 +47,7 @@ namespace Enemy
             _rigidbody.MovePosition(spawn.position);
             transform.rotation = spawn.rotation;
             _rigidbody.MoveRotation(spawn.rotation);
+            _rigidbody.angularVelocity = Vector3.zero;
         }
     }
 }
